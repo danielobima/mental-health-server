@@ -5,6 +5,7 @@ import firebase_admin
 from firebase_admin import credentials
 from .routes import *
 from flask_cors import CORS
+import re
 
 
 def create_app(test_config=None):
@@ -17,12 +18,13 @@ def create_app(test_config=None):
     )
     print("project ID: ")
     print(os.environ.get("FB_PROJECT_ID"))
+    priv_key = re.sub(r'/\\n/g', '\n', os.environ.get("FB_PRIVATE_KEY"))
     cred = credentials.Certificate(
         {
             "type": "service_account",
             "project_id": os.environ.get("FB_PROJECT_ID"),
             "private_key_id": os.environ.get("FB_PRIVATE_KEY_ID"),
-            "private_key": os.environ.get("FB_PRIVATE_KEY"),
+            "private_key": priv_key,
             "client_email": os.environ.get("FB_CLIENT_EMAIL"),
             "client_id": os.environ.get("FB_CLIENT_ID"),
             "auth_uri": os.environ.get("FB_AUTH_URI"),
