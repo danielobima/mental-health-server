@@ -16,11 +16,11 @@ def create_app(test_config=None):
         SECRET_KEY="dev",
         DATABASE=os.path.join(app.instance_path, "flaskr.sqlite"),
     )
-    # print("project ID: ")
-    # print(os.environ.get("FB_PROJECT_ID"))
+    print("project ID: ")
+    print(os.environ.get("FB_PROJECT_ID"))
     priv_key = re.sub(r'\\n', '\n', os.environ.get("FB_PRIVATE_KEY"))
-    # print('priv key:')
-    # print(priv_key)
+    print('priv key:')
+    print(priv_key)
     cred = credentials.Certificate(
         {
             "type": "service_account",
