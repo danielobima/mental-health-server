@@ -15,6 +15,7 @@ def create_app(test_config=None):
         SECRET_KEY="dev",
         DATABASE=os.path.join(app.instance_path, "flaskr.sqlite"),
     )
+    print("project ID: "+os.environ.get("FB_PROJECT_ID"))
     cred = credentials.Certificate(
         {
             "type": "service_account",
