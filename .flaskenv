@@ -1,1 +1,1 @@
-FLASK_APP=api
+FLASK_APP=main
